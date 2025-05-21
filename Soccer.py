@@ -49,8 +49,8 @@ Game_all = pd.read_csv('Training_games.csv')
 Game_all.head()
 
 # List of teams
-Team = pd.DataFrame({'team':['Senegal','Qatar','Netherlands','Ecuador','Iran','England','United States','Wales','Argentina','Saudi Arabia','Mexico','Poland','Denmark','Tunisia','France','Australia','Germany','Japan','Spain','Costa Rica','Morocco','Croatia','Belgium','Canada','Switzerland','Cameroon','Brazil','Serbia','Uruguay','Korea Republic','Portugal','Ghana']})
-Teams = ['Senegal','Qatar','Netherlands','Ecuador','Iran','England','United States','Wales','Argentina','Saudi Arabia','Mexico','Poland','Denmark','Tunisia','France','Australia','Germany','Japan','Spain','Costa Rica','Morocco','Croatia','Belgium','Canada','Switzerland','Cameroon','Brazil','Serbia','Uruguay','Korea Republic','Portugal','Ghana']
+Team = pd.DataFrame({'team':['Senegal', 'Qatar', 'Netherlands', 'Ecuador', 'Iran', 'England', 'United States', 'Wales', 'Argentina', 'Saudi Arabia', 'Mexico', 'Poland', 'Denmark', 'Tunisia', 'France', 'Australia', 'Germany', 'Japan', 'Spain', 'Costa Rica', 'Morocco', 'Croatia', 'Belgium', 'Canada', 'Switzerland', 'Cameroon', 'Brazil', 'Serbia', 'Uruguay', 'Korea Republic', 'Portugal', 'Ghana']})
+Teams = ['Senegal', 'Qatar', 'Netherlands', 'Ecuador', 'Iran', 'England', 'United States', 'Wales', 'Argentina', 'Saudi Arabia', 'Mexico', 'Poland', 'Denmark', 'Tunisia', 'France', 'Australia', 'Germany', 'Japan', 'Spain', 'Costa Rica', 'Morocco', 'Croatia', 'Belgium', 'Canada', 'Switzerland', 'Cameroon', 'Brazil', 'Serbia', 'Uruguay', 'Korea Republic', 'Portugal', 'Ghana']
 
 # Replacing 'South Korea' to 'Korea Republic'
 Game_all = Game_all.replace('South Korea','Korea Republic')
@@ -86,9 +86,45 @@ Player_all.loc[(Game_62.loc[0]['Player1'])]
 
 
 # Training set
+team_age = []
+for j in range(62):
+    # Players from teams 1 and 2
+    team1_index = list(Game_62.loc[j][8:19])
+    team2_index = list(Game_62.loc[j][18:30])
+    
+    # Team age average
+    temp1 = Player_all.iloc[team1_index]['Age'].mean()
+    temp2 = Player_all.iloc[team2_index]['Age'].mean()
+    team_age.append([temp1, temp2])
+
+# Creating the DataFrame for the average age
+cols = ['Average_age1', 'Average_age2']
+Train_df_age = pd.DataFrame(team_age, columns = cols)
+Train_df_age.head()
+
+# DataFrame for every teams' player overall rating
+team_overall = []
+for j in range(62):
+
+    # Players 1 and 2 index fromt he Team DataFrame
+    team_index = list(Game_62.loc[j][8:30])
+    
+    # team1 and team2 player overall from the Team DataFrame
+
+
+
+
+
+    team_index = list(Game_62.loc[j][8:30])
+
+
 
 
 # https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IND-GPXX0TUZEN/Training_games.csv'
+
+
+
+
 
 
 
